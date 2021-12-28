@@ -1,15 +1,15 @@
-package twitter_app;
+package twitter_app.postPojo;
 
 
-public class postObj {
+public class postOutputObj {
 
     private nestedPostObj data;
 
-    postObj() {
+    public postOutputObj() {
 
     }
 
-    postObj(nestedPostObj data) {
+    postOutputObj(nestedPostObj data) {
         this.data = data;
     }
 

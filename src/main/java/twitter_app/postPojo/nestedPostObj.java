@@ -1,11 +1,11 @@
-package twitter_app;
+package twitter_app.postPojo;
 
 public class nestedPostObj {
 
-    String id;
-    String text;
+    private String id;
+    private String text;
 
-    nestedPostObj() {
+    public nestedPostObj() {
 
     }
 

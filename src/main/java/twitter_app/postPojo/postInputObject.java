@@ -1,12 +1,11 @@
-package twitter_app;
+package twitter_app.postPojo;
 
 public class postInputObject {
 
 
-    String text;
+    private String text;
 
-    postInputObject(String body)
-    {
+    public postInputObject(String body) {
         this.text = body;
     }
 

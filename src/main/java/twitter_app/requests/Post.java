@@ -1,9 +1,11 @@
-package twitter_app;
+package twitter_app.requests;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
+import twitter_app.TwitterConfiguration;
+import twitter_app.postPojo.postInputObject;
+import twitter_app.postPojo.postOutputObj;
 
 
 public class Post {
@@ -11,16 +13,16 @@ public class Post {
     private String URL;
     private TwitterConfiguration configuration;
     private postInputObject pojo;
-    private ObjectMapper mapper ;
+    private ObjectMapper mapper;
 
-    Post(String URL, postInputObject pojo, TwitterConfiguration configuration) {
+    public Post(String URL, postInputObject pojo, TwitterConfiguration configuration) {
         this.URL = URL;
         this.configuration = configuration;
         this.pojo = pojo;
         mapper = new ObjectMapper();
     }
 
-    public postObj send() throws Exception {
+    public postOutputObj send() throws Exception {
 
         String body = mapper.writeValueAsString(pojo);
 
@@ -35,9 +37,9 @@ public class Post {
                 .post(ClientResponse.class, body);
 
         String json_str = response.getEntity(String.class);
-        postObj res_obj = null;
+        postOutputObj res_obj = null;
         try {
-            res_obj = mapper.readValue(json_str, postObj.class);
+            res_obj = mapper.readValue(json_str, postOutputObj.class);
         } catch (Exception e) {
             e.printStackTrace();
         }

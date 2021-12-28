@@ -1,6 +1,11 @@
 package twitter_app;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import twitter_app.getPojo.getInputObject;
+import twitter_app.getPojo.getOutputObj;
+import twitter_app.postPojo.postInputObject;
+import twitter_app.postPojo.postOutputObj;
+import twitter_app.requests.Get;
+import twitter_app.requests.Post;
 
 public class twrClient<T> {
     private String BASE_GET_URL = "https://api.twitter.com/1.1/statuses/show.json?id=";
@@ -10,19 +15,19 @@ public class twrClient<T> {
     private TwitterConfiguration configuration;
     private T payload;
 
-    twrClient(String REQ_TYPE, T payload,TwitterConfiguration configuration) {
+    public twrClient(String REQ_TYPE, T payload, TwitterConfiguration configuration) {
         this.REQ_TYPE = REQ_TYPE;
         this.payload = payload;
         this.configuration = configuration;
     }
 
 
-    private getObject getReqHandler() {
+    private getOutputObj getReqHandler() {
         Get getObj = new Get(this.BASE_GET_URL, (getInputObject) this.payload, this.configuration);
         return getObj.send();
     }
 
-    private postObj postReqHandler() throws Exception {
+    private postOutputObj postReqHandler() throws Exception {
 
         Post postObj = new Post(this.BASE_POST_URL, (postInputObject) this.payload, this.configuration);
         return postObj.send();
@@ -33,10 +38,10 @@ public class twrClient<T> {
 
         switch (this.REQ_TYPE) {
             case "GET":
-                return  getReqHandler();
+                return getReqHandler();
 
             case "POST":
-                return  postReqHandler();
+                return postReqHandler();
             default:
                 System.out.println("Enter a valid Request type !");
                 return null;
