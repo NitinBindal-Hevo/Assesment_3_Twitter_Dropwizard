@@ -1,0 +1,8 @@
+bearer_Token: "Enter Bearer Token of your Twitter Account"
+consumer_Key: "Enter Consumer Key of your Twitter Account"
+access_Token: "Enter Access Token of your Twitter Account"
+timestamp: "Enter Timestamp"
+auth_Nounce: "Enter Auth Nonce"
+auth_Signature: "Enter Auth Signature"
+
+
