@@ -17,7 +17,6 @@ public class Get {
 
         this.URL = URL + pojo.getId();
         this.configuration = configuration;
-        Client client = Client.create();
 
     }
 
