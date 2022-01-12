@@ -2,13 +2,8 @@ package twitter_app;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
-import twitter_app.getPojo.getInputObject;
-import twitter_app.getPojo.getOutputObj;
-import twitter_app.postPojo.postInputObject;
-import twitter_app.postPojo.postOutputObj;
 
 import java.io.File;
-import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -29,9 +24,9 @@ public class App {
  Scanner inp = new Scanner(System.in);
  System.out.println("Enter the Tweet Id :  ");
  String id = inp.nextLine();
- getInputObject obj = new getInputObject(id);
- twrClient client = new twrClient("GET",obj,config);
- getOutputObj res = (getOutputObj) client.execute();
+ GetInputObject obj = new GetInputObject(id);
+ TwrClient client = new TwrClient("GET",obj,config);
+ GetOutputObj res = (GetOutputObj) client.execute();
  System.out.println(res);
  */
 
@@ -42,10 +37,10 @@ public class App {
  Scanner inp = new Scanner(System.in);
  System.out.println("Enter Tweet's body :  ");
  String body = inp.nextLine();
- postInputObject obj = new postInputObject(body);
+ PostInputObject obj = new PostInputObject(body);
 
- twrClient client = new twrClient("POST",obj,config);
- postOutputObj res = (postOutputObj) client.execute();
+ TwrClient client = new TwrClient("POST",obj,config);
+ PostOutputObj res = (PostOutputObj) client.execute();
 
  System.out.println("Id :  " + res.getData().getId() + "\n" + "Text :  " + res.getData().getText());
 

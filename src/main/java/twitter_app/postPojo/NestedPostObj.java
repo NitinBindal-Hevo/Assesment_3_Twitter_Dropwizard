@@ -1,15 +1,15 @@
 package twitter_app.postPojo;
 
-public class nestedPostObj {
+public class NestedPostObj {
 
     private String id;
     private String text;
 
-    public nestedPostObj() {
+    public NestedPostObj() {
 
     }
 
-    public nestedPostObj(String id, String text) {
+    public NestedPostObj(String id, String text) {
         this.id = id;
         this.text = text;
     }

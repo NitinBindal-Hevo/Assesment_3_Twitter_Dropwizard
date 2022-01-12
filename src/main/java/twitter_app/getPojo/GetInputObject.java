@@ -1,14 +1,14 @@
 package twitter_app.getPojo;
 
-public class getInputObject {
+public class GetInputObject {
 
     private String id;
 
-    public getInputObject() {
+    public GetInputObject() {
 
     }
 
-    public getInputObject(String id) {
+    public GetInputObject(String id) {
         this.id = id;
     }
 

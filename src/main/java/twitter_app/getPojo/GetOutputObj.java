@@ -3,7 +3,7 @@ package twitter_app.getPojo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class getOutputObj {
+public class GetOutputObj {
 
     @JsonProperty("created_at")
     private String created_at;
@@ -14,11 +14,11 @@ public class getOutputObj {
     @JsonProperty("source")
     private String source;
 
-    public getOutputObj() {
+    public GetOutputObj() {
 
     }
 
-    public getOutputObj(String created_at, String id, String id_str, String text, String source) {
+    public GetOutputObj(String created_at, String id, String id_str, String text, String source) {
         this.created_at = created_at;
         this.id = id;
         this.text = text;

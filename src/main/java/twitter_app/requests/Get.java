@@ -5,22 +5,22 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import twitter_app.TwitterConfiguration;
-import twitter_app.getPojo.getInputObject;
-import twitter_app.getPojo.getOutputObj;
+import twitter_app.getPojo.GetInputObject;
+import twitter_app.getPojo.GetOutputObj;
 
 public class Get {
 
     private String URL;
     private TwitterConfiguration configuration;
 
-    public Get(String URL, getInputObject pojo, TwitterConfiguration configuration) {
+    public Get(String URL, GetInputObject pojo, TwitterConfiguration configuration) {
 
         this.URL = URL + pojo.getId();
         this.configuration = configuration;
 
     }
 
-    public getOutputObj send() {
+    public GetOutputObj send() {
         Client client = Client.create();
         ClientResponse response = client.resource(this.URL)
                 .header("Authorization", "Bearer " + configuration.getBearer_Token())
@@ -31,10 +31,10 @@ public class Get {
         ObjectMapper obj = new ObjectMapper();
         obj.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
 
-        getOutputObj res_obj = null;
+        GetOutputObj res_obj = null;
 
         try {
-            res_obj = obj.readValue(temp, getOutputObj.class);
+            res_obj = obj.readValue(temp, GetOutputObj.class);
         } catch (Exception e) {
             e.printStackTrace();
         }

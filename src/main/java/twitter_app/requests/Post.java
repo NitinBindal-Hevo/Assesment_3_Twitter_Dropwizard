@@ -4,25 +4,25 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import twitter_app.TwitterConfiguration;
-import twitter_app.postPojo.postInputObject;
-import twitter_app.postPojo.postOutputObj;
+import twitter_app.postPojo.PostInputObject;
+import twitter_app.postPojo.PostOutputObj;
 
 
 public class Post {
 
     private String URL;
     private TwitterConfiguration configuration;
-    private postInputObject pojo;
+    private PostInputObject pojo;
     private ObjectMapper mapper;
 
-    public Post(String URL, postInputObject pojo, TwitterConfiguration configuration) {
+    public Post(String URL, PostInputObject pojo, TwitterConfiguration configuration) {
         this.URL = URL;
         this.configuration = configuration;
         this.pojo = pojo;
         mapper = new ObjectMapper();
     }
 
-    public postOutputObj send() throws Exception {
+    public PostOutputObj send() throws Exception {
 
         String body = mapper.writeValueAsString(pojo);
 
@@ -37,9 +37,9 @@ public class Post {
                 .post(ClientResponse.class, body);
 
         String json_str = response.getEntity(String.class);
-        postOutputObj res_obj = null;
+        PostOutputObj res_obj = null;
         try {
-            res_obj = mapper.readValue(json_str, postOutputObj.class);
+            res_obj = mapper.readValue(json_str, PostOutputObj.class);
         } catch (Exception e) {
             e.printStackTrace();
         }
